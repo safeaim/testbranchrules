@@ -14,8 +14,8 @@ jobs:
       - name: install shellcheck
         run: sudo apt install shellcheck
       - name: find scripts
-        id: scripts-lookup
         run: echo "SCRIPTS=$(find $GITHUB_WORKSPACE -name '*.sh')" >> "$GITHUB_OUTPUT"
+        id: scripts-lookup
       - name: test code
         run: shellcheck ${{ steps.scripts-lookup.outputs.SCRIPTS }}
         if:  ${{ contains(steps.scripts-lookup.outputs.SCRIPTS,'sh') }}
